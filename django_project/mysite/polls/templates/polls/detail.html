@@ -1,0 +1,18 @@
+<h1>{{ question.question_text }}</h1>
+
+<!-- action - 폼에 입력되는 정보들이 어디로 전송되어야 하는가?, 
+    method - get/post , enctype -->
+<form action="" method="post"> <!-- request 헤더에 값 / request body에 값 -->
+    <!-- input, select, textarea -->
+    {% csrf_token %}
+    <ul>
+        {% for choice in question.choice_set.all %}
+        <li>
+            <input type="radio" name="choice" 
+            value="{{choice.id}}" id="{{choice.id}}"> <!-- vlaue에 중복될 가능성 있는 값 x (id는 중복안됨) -->
+            <label for="{{choice.id}}">{{ choice.choice_text }}</label>
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="전송">
+</form>
