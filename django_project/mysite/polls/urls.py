@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('<int:question_id>/', views.detail, name='detail'),
     path('<int:question_id>/results/', views.results, name=''),
-    path('<int:question_id>/votes/', views.votes),
+    path('<int:question_id>/votes/', views.votes, name='votes'),
+    path('<int:question_id>/reset/', views.reset, name='reset'),
 ]
